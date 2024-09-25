@@ -1,4 +1,4 @@
-class TreeNode<T> {
+export class TreeNode<T> {
     value: T; 
     left: TreeNode<T> | null;
     right: TreeNode<T> | null;
@@ -10,7 +10,7 @@ class TreeNode<T> {
     }
 } 
 
-class BinaryTree<T> {
+export class BinaryTree<T> {
     root: TreeNode<T> = null;
 
     insert(val: T) {
