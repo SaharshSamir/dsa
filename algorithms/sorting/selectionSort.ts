@@ -1,27 +1,65 @@
-let arr = [ 64, 25, 12, 22, 11];
+function swap(arr: number[], i: number, j: number): number[]{
+    let temp = arr[i];
+    arr[i] = temp;
+    arr[j] = temp;
 
-let n = arr.length;
-
-function swap(a:number, b:number) {
-	let temp = arr[a];
-	arr[a] = arr[b];
-	arr[b] = temp
-} 
-
-for(let i=0; i<n; i++) {
-	
-	let min_index = i;
-
-	//find smallest elem in the remaining subarray
-	for(let j=i+1; j<n; j++) {
-		if(arr[j] < arr[min_index]){
-			min_index = j;
-		}
-	}
-
-	//swap the smallest elem found with the current elem
-	swap(i, min_index);
+    return arr;
 }
 
-console.log(arr);
+//iterative
+/*
+function selectionSort(nums: number[]): number[] {
+    for(let i=0; i<nums.length; i++){
+        let minIndex = i;
+        for(let j=i+1; j<nums.length; j++){
+            minIndex = nums[j] < nums[minIndex] ? j : minIndex;
+        }
+
+
+        let temp = nums[i];
+        nums[i] = nums[minIndex];
+        nums[minIndex] = temp;
+
+    }
+
+    return nums;
+
+}
+*/
+
+//recursive
+function selectionSort(nums: number[]): number[] {
+    let minIndex = 0;
+
+    if(nums.length === 0) return nums;
+
+    minIndex = nums.reduce((min, val, idx) => {
+        return val < nums[min] ? idx : min;
+    }, minIndex);
+
+    const temp = nums[0];
+    nums[0] = nums[minIndex];
+    nums[minIndex] = temp;
+
+    return [nums[0], ...selectionSort(nums.slice(1))];
+}
+
+function test() {
+    const testCases = [
+        [15, 2, 5, 1, 9, 20, 10, 4],
+        [9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
+        [10],
+    ]
+
+    testCases.forEach(testCase => {
+        console.log("----------------");
+        console.log("case: ", testCase);
+        const res = selectionSort(testCase);
+        console.log("answer: ", res);
+    })
+
+}
+
+test();
 //time complexity: O(n^2)
+export {};

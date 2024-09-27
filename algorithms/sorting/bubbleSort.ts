@@ -13,6 +13,7 @@ function swap(a:number, b:number) {
 
 for (let i=0; i<n-1; i++) {
 	//last i elements are already in order
+    //in each iteration, the biggest element will "bubble up" to the end
 	for (let j=0; j<n-i-1; j++) {
 		if(arr[j] > arr[j+1]){
 			swap(j, j+1);
@@ -22,3 +23,4 @@ for (let i=0; i<n-1; i++) {
 
 console.log(arr);
 //time complexity: O(n^2)
+export {}
