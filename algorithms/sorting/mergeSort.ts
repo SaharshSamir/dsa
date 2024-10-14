@@ -1,3 +1,4 @@
+import { test } from "./test";
 
 //given two sorted arrays, merge them into a single sorted array
 function merge(nums1: number[], nums2: number[]): number[]{
@@ -38,22 +39,7 @@ function mergeSort(nums: number[]): number[] {
     return merge(left, right); 
 }
 
-function test() {
-    const testCases = [
-        [15, 2, 5, 1, 9, 20, 10, 4],
-        [9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
-        [10],
-    ];
 
-    testCases.forEach(testCase => {
-        console.log("----------------");
-        console.log("case: ", testCase);
-        const res = mergeSort(testCase);
-        console.log("answer: ", res);
-    });
-}
-
-
-test();
+test(mergeSort);
 
 export {};

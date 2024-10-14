@@ -1,3 +1,5 @@
+import { test } from "./test";
+
 function swap(arr: number[], i: number, j: number): number[]{
     let temp = arr[i];
     arr[i] = temp;
@@ -44,22 +46,7 @@ function selectionSort(nums: number[]): number[] {
     return [nums[0], ...selectionSort(nums.slice(1))];
 }
 
-function test() {
-    const testCases = [
-        [15, 2, 5, 1, 9, 20, 10, 4],
-        [9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
-        [10],
-    ]
 
-    testCases.forEach(testCase => {
-        console.log("----------------");
-        console.log("case: ", testCase);
-        const res = selectionSort(testCase);
-        console.log("answer: ", res);
-    })
-
-}
-
-test();
+test(selectionSort);
 //time complexity: O(n^2)
 export {};

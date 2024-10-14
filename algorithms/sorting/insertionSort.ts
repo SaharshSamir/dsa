@@ -1,24 +1,20 @@
-let arr = [12, 11, 13, 5, 6];
+import { test } from "./test";
 
-console.log('before sort\n', arr);
+function insertionSort(nums: number[]): number[] {
 
-let n = arr.length;
+    for(let i=1; i< nums.length; i++){
+        let key = nums[i];
 
-function swap(a:number, b:number) {
-	let temp = arr[a];
-	arr[a] = arr[b];
-	arr[b] = temp;
+        let j = i-1;
+        while(j >= 0 && nums[j] > key){
+            nums[j+1] = key; 
+            j--;
+        }
+
+        nums[j+1] = key; 
+    } 
+
+    return nums;
 }
 
-for(let i=1; i<n; i++) {
-	let key = arr[i];
-	let j = i-1;
-
-	while(j>=0 && arr[j]>key) {
-		arr[j+1] = arr[j];
-		j = j-1;
-	}
-
-	arr[j+1] = key;
-}
-console.log('after sort\n', arr);
+test(insertionSort);
