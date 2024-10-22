@@ -1,26 +1,28 @@
 //bubble sort 
 //in each iteration, compare 2 elems, and swap if elemA > elemB
 
-let arr = [5, 1, 4, 2, 8];
+import {test} from "./test";
 
-let n = arr.length;
-
-function swap(a:number, b:number) {
-	let temp = arr[a];
-	arr[a] = arr[b];
-	arr[b] = temp;
+function swap(arr: number[], i: number, j: number) {
+  const temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
 }
 
-for (let i=0; i<n-1; i++) {
-	//last i elements are already in order
-    //in each iteration, the biggest element will "bubble up" to the end
-	for (let j=0; j<n-i-1; j++) {
-		if(arr[j] > arr[j+1]){
-			swap(j, j+1);
-		} 	
-	}
+function bubbleSort(arr: number[]){
+  const len = arr.length - 1;
+
+  for(let i=0; i<len; i++){
+    for(let j=0; j<len-i; j++){
+      if(arr[j] > arr[j+1]){
+        swap(arr, j, j+1);
+      }
+    }
+  }
+  return arr;
 }
 
-console.log(arr);
+test(bubbleSort);
+
 //time complexity: O(n^2)
 export {}

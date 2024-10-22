@@ -1,28 +1,20 @@
 let arr = [10, 20, 30, 50, 60, 80, 110, 130, 140, 170], target = 110;
 
-let n = arr.length;
+let i=0, j=arr.length - 1;
 
-let low = 0, high = n, mid = (low+high)/2;
+while(i < j){
+  const mid = Math.floor((j + i)/2);
+  console.log("j: ", j, "i: ", i, "mid: ", mid);
 
-let found = false;
-
-while(low === high) {
-	if(arr[mid] === target){
-		found = true;
-		console.log(`found ${target} at ${mid}`);
-	}
-
-	if(arr[target] < mid) {
-		high = mid;
-		mid = (low+high)/2;
-	}
-	if(arr[target] > mid) {
-		low = mid;
-		mid = (low+high)/2;
-	}
+  if(arr[mid] > target){
+    j = mid;
+  }else if(arr[mid] < target){
+    i = mid;
+  }else if(arr[mid] === target){
+    console.log(`found ${target} at ${mid}`);
+    break;
+  }
 
 }
 
-if(!found){
-	console.log(`${target} not found`);
-}
+export {};
